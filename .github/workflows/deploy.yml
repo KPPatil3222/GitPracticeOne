@@ -1,0 +1,59 @@
+name: Salesforce Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3. Install Salesforce CLI
+      - name: Install Salesforce CLI
+        run: |
+          npm install --global @salesforce/cli
+
+      # 4. Authenticate Salesforce Org
+      - name: Authenticate Salesforce Org
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > sfdx_auth_url.txt
+          sf org login sfdx-url \
+            --sfdx-url-file sfdx_auth_url.txt \
+            --alias newDevOrg \
+            --set-default
+
+      # 5. Verify authentication
+      - name: Verify Salesforce Org
+        run: |
+          sf org display --target-org newDevOrg
+
+      # 6. Validate deployment
+      - name: Validate Deployment
+        run: |
+          sf project deploy start \
+            --source-dir force-app \
+            --target-org newDevOrg \
+            --dry-run \
+            --wait 30
+
+      # 7. Deploy to Salesforce
+      - name: Deploy to Salesforce
+        run: |
+          sf project deploy start \
+            --source-dir force-app \
+            --target-org newDevOrg \
+            --wait 30
