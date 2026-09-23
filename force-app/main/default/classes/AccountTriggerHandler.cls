@@ -7,5 +7,7 @@ public class AccountTriggerHandler {
     public static void onBeforeDelete(List<Account> listOfAccounts)
     {
       AccountTriggerHelper.restrictAccountDeletion(listOfAccounts);
+
+      system.debug('my accounts==>'+listOfAccounts);
     }
 }
