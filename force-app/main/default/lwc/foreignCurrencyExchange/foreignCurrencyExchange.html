@@ -1,0 +1,27 @@
+<template>
+
+    <lightning-card title="Currency Exchange Rates">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-button
+                label="Load Rates"
+                variant="brand"
+                onclick={loadRates}>
+            </lightning-button>
+
+        </div>
+
+        <template if:true={currencyList}>
+
+            <lightning-datatable
+                    key-field="currency"
+                    data={currencyList}
+                    columns={columns}>
+            </lightning-datatable>
+
+        </template>
+
+    </lightning-card>
+
+</template>

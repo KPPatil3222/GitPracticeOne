@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Contact DataTable">
+        <div style="height: 300px;">
+          <lightning-datatable key-field="id" data={dataForInput} columns={columns} oncellchange={handleCellchange}
+            onrowselection={handleRowSelection}>
+          </lightning-datatable>
+        </div>
+      </lightning-card>
+    
+</template>

@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Nested If Else Example" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <lightning-input type="number" label="Enter Student Marks" value={grade} onchange={handleMarksChange}></lightning-input>
+        </div>
+
+    <div lwc:if={gradeAplus}>
+        <p font-weight="bold">==>Student has A+ grade</p>
+    </div>
+    <div lwc:elseif={gradeA}>
+        <p font-weight="bold">==>Student has A grade</p>
+    </div>
+    <div lwc:elseif={gradeB}>
+        <p font-weight="bold">==>Student has B grade</p>
+    </div>
+    <div lwc:else>
+        <p font-weight="bold">==>Student has C grade</p>
+    </div>  
+    </lightning-card>
+    <lightning-card title="Calling Javascript Object" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <p >{person.Name}</p>
+            <p >{person.Age}</p>
+            <p >{person.Address.Street}</p>
+            <p >{person.Address.City}</p>
+            <p >{person.Address.State}</p>
+            <p >{person.Address.ZipCode}</p>
+            <p >{person.gender}</p>
+            <p >{person.phone}</p>
+        </div>
+    </lightning-card>
+    
+</template>

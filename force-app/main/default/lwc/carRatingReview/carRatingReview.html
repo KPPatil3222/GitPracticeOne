@@ -1,0 +1,123 @@
+<template>
+    <lightning-card title="Car Rating & Review">
+        <template lwc:if={reviews.length}>
+            <!-- Average Rating -->
+            <div class="slds-var-p-around_small">
+                <div class="slds-grid slds-gutters">
+
+                    <div class="slds-col slds-size_1-of-3">      
+                        <c-star-rating value={averageRating} max="5" 
+                        read-only>                            
+                        </c-star-rating>
+                    </div>
+
+                    <div class="slds-col slds-size_2-of-3">
+                        Based on {totalReviews} Reviews
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Rating Distribution -->
+            <div class="slds-var-p-around_small">
+
+                <template
+                    for:each={ratingDistributionList}
+                    for:item="dist">
+
+                    <div
+                        key={dist.rating}
+                        class="slds-var-p-around_small slds-grid slds-grid_vertical-align-center">
+
+                        <!-- Rating -->
+                        <div class="slds-col slds-size_3-of-12">
+
+                            <span>
+                                {dist.rating} stars
+                            </span>
+
+                        </div>
+
+
+                        <!-- Progress Bar -->
+                        <div class="slds-col slds-size_7-of-12">
+
+                            <lightning-progress-bar
+                                value={dist.percentage}
+                                variant="success"
+                                size="medium">
+                            </lightning-progress-bar>
+
+                        </div>
+
+
+                        <!-- Percentage -->
+                        <div
+                            class="slds-col slds-size_2-of-12 slds-text-align_center">
+
+                            <span>
+                                {dist.percentage}%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+
+            <!-- Reviews -->
+            <div class="slds-var-p-around_small">
+
+                <template
+                    for:each={reviews}
+                    for:item="review">
+
+                    <div
+                        key={review.Id}
+                        class="slds-var-p-around_small slds-border_bottom">
+                    <div class="slds-grid slds-gutters">
+                     <div class="sldes-col slds-size_1-of-1">  
+                        <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_small">
+                        
+                        <div class="slds-col slds-p-right-small">
+                            <c-star-rating
+                            value={review.Rating__c} 
+                            read-only="true">
+                        </c-star-rating>
+                        </div>
+
+                        <div class="slds col slds-text-align_right">
+                           <span class="slds-text-body_small slds-   text-color_weak">{review.CreatedDateFormatted}
+                             </span> 
+                           
+                        </div>
+                        </div>
+                        <p class="slds-text-body_small slds-text-color_weak">
+                            {review.Comments__c}    
+                        </p>
+                    </div> 
+                    </div>   
+                </div>
+
+                </template>
+
+            </div>
+
+        </template>
+
+
+        <!-- No Reviews -->
+        <template lwc:else>
+
+            <c-place-holder message="No Review Found">
+            </c-place-holder>
+
+        </template>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Parent Component April Two">
+        <lightning-input label="Parent Field" class="slds-p-around_medium" placeholder="enter value"
+          onchange={handleInputField}></lightning-input>
+          <p>Account recived from child : <strong>{childData}</strong></p>
+      </lightning-card>
+      <c-child-component-april data-id="childcmp" parentvalue={parentData} onaddition={handleSend}></c-child-component-april>
+</template>

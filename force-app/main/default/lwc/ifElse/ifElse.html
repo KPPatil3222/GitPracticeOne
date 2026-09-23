@@ -1,0 +1,14 @@
+<template>
+    <div>
+         <lightning-input type="checkbox" label="Show Tom" name="Show Tom" onchange={handleShowTom}></lightning-input>
+          <lightning-input type="checkbox" label="Show Jerry" name="Show Jerry" onchange={handleShowJerry}></lightning-input>
+    </div>
+
+    <div if:true={showTom}>
+        <img src="https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png" alt="Tom" width="200" height="200">
+</div>
+
+    <div if:true={showJerry}>
+        <img src="https://wallpapers.com/images/hd/jerry-mouse-tom-and-jerry-f02o2pcmwwqe6sl1.jpg" alt="Jerry" width="200" height="200">
+    </div>
+</template>

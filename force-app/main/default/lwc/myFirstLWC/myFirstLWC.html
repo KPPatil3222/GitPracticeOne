@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title= "My First Component" style="color: teal;">
+        <lightning-input value={accountName}  style="color: green;" label="Account Name" class="slds-p-horizontal_x-large" placeholder="Enter Account Name" 
+        onchange={handleAccountName}></lightning-input>
+        <b><p style="color: crimson;">Account Name:  {accountName}</p></b>
+        
+        <lightning-input value={supportTier} style="color: green;" label="Support Tier" class="slds-p-horizontal_x-large" placeholder="Support Tier" 
+        onchange={handleSupportTier}></lightning-input>
+        <b><p style="color: coral;">Support Tier:  {supportTier}</p></b>
+    
+        <lightning-input value={recordId} style="color: green;" label="RecordId" class="slds-p-horizontal_x-large" placeholder="RecordId" 
+        onchange={handleRecordId}></lightning-input>
+    
+        <b><p>ConcatedValue: {concatedValue}</p></b>
+        <div>
+            <lightning-button variant="brand" label="Update Account" onclick={handleUpdateClick}>
+            </lightning-button>
+            <lightning-button  variant="brand" label="Save Account" onclick={handleSaveClick}>
+            </lightning-button>
+            
+        </div>
+        
+        </lightning-card>
+    
+</template>

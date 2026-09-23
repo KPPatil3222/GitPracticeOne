@@ -1,0 +1,56 @@
+<template>
+
+    <!-- lightning button for open modal window -->
+    <!--Use template if:true to display/hide popup based on isModalOpen value-->
+    <template if:true={isModalOpen}>
+
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={handleCancel}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Record Edit Form
+                    </h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <template if:false={recordId}>
+                        <lightning-input value={recordId} label="RecordId" placeholder="Enter RecordId"
+                            class="slds-p-horizontal_x-large" onchange={handleRecordId}></lightning-input>
+                    </template>
+
+                    <template if:true={recordId}>
+                        <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName}>
+                            <lightning-messages>
+                            </lightning-messages>
+                            <lightning-input-field -field field-name="Name"> </lightning-input-field>
+                            <!-- Hidden submit button that is visually moved into the footer -->
+                            <div class="real-submit-button">
+                                <button type="submit" class="slds-button slds-button_brand">Save</button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </template>
+
+
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleCancel}
+                        title="Cancel">Cancel</button>
+                    <!-- Proxy button that triggers the real submit -->
+                    <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                </footer>
+            </div>
+        </section>
+
+    </template>
+
+
+</template>

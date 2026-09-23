@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Parent Component March">
+        <lightning-input label="Parent Field" class="slds-p-around_medium" placeholder="enter value"
+          onchange={handleInputField}></lightning-input>
+        parentDataMarch : {parentDataMarch}
+      </lightning-card>
+    
+      <template if:true={parentDataMarch}>
+        <c-child-component-april parentvalue={parentDataMarch}></c-child-component-april>
+      </template>
+    
+</template>

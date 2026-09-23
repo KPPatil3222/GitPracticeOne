@@ -1,0 +1,23 @@
+<template>
+   <lightning-card variant="narrow" title="Datatable Component" icon-name="standard:contact">
+        <div class="slds-m-around_large">
+            <lightning-datatable
+                key-field="Id"
+                data={contactData}
+                onrowaction={handleRowAction}
+                onbuttonclick={handleButtonClick}
+                shorted-by={sortedBy}
+                sorted-direction={sortedDirection}
+                onsort={handleSortData}
+                onsave={handleSave}
+                draft-values={draftValues}
+                columns={columnList}
+                hide-checkbox-column
+            ></lightning-datatable>
+        </div>
+
+        <div slot="footer">
+            <lightning-badge label="Total Records" variant="inverse" size="large" class="slds-m-right_small"></lightning-badge>
+            </div>
+    </lightning-card>   
+</template>

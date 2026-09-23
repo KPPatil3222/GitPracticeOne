@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Parent For Pop-Up">
+        <lightning-button label="Open Pop-Up" class="slds-p-around_medium" onclick={openPopUp}></lightning-button>
+        
+        <template if:true={isPopUpVisible}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 class="slds-modal__title">My Modal Heading</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        Content: {content}
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Ok" class="slds-p-around_medium" onclick={handleOkay}></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+</template>

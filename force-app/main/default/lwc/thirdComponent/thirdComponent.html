@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Account Type">
+        <div class="slds-p-around_large">
+            <lightning-combobox
+                name="picklist"
+                label="Choose an option"
+                value={accountType}
+                placeholder="Select Account Type"
+                options={options}
+                onchange={handleChange}>
+            </lightning-combobox>
+
+            <p class="slds-m-top_medium">Selected: {accountType}</p>
+
+            <template for:each={accountList} for:item="acc">
+                <div key={acc.Id} class="slds-box slds-box_x-small slds-m-top_small">
+                    <p><strong>Account Name:</strong> {acc.Name}</p>
+                    <p><strong>Account Type:</strong> {acc.Type}</p>
+                    <p><strong>Account Id:</strong> {acc.Id}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

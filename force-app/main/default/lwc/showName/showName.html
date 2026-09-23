@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Record Information">
+        <div class="slds-p-around_medium">
+
+            <template if:true={recordName}>
+                <p>
+                    <strong>Record Name:</strong> {recordName}
+                </p>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">
+                    {error}
+                </p>
+            </template>
+
+        </div>
+                <div class="slds-p-around_medium">
+
+            <p>
+                <strong>Username:</strong> {userName}
+            </p>
+
+            <p>
+                <strong>Email:</strong> {userEmail}
+            </p>
+
+        </div>
+    </lightning-card>
+</template>

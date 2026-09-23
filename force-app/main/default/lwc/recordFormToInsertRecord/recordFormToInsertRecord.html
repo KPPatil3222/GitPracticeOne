@@ -1,0 +1,15 @@
+<template>
+    <lightning-card icon-name="standard:account" variant="base"  title="Record Insert Form" >
+      <div class="slds-p-horizontal_medium">
+        <lightning-record-form 
+            object-api-name="Account"
+            mode="edit"
+            columns="2"
+            fields={fields}
+            onsuccess={handleSuccess}
+            onerror={handleError}>
+        </lightning-record-form>
+      </div>
+    </lightning-card>
+    
+</template>

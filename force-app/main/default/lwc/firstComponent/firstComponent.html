@@ -1,0 +1,12 @@
+<template>
+  <lightning-card title="My First Component">
+    <lightning-input value={accountName} label="Account Name" class="slds-p-horizontal_x-large"
+      placeholder="Enter Account Name" onchange={handleAccountName}></lightning-input>
+    <p> account Name : {accountName}</p>
+    <lightning-input value={supoortTier} label="Suport Tier" placeholder="Enter Suport Tier"
+      class="slds-p-horizontal_x-large" onchange={shubham}></lightning-input>
+    <p> Suport Tier : {supoortTier}</p>
+
+    <p> concatedValue: {concatedValue}</p>
+  </lightning-card>
+</template>

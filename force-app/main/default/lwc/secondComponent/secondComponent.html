@@ -1,0 +1,47 @@
+<template>
+  
+    <lightning-card title="My Second Component">
+        <lightning-input value={accountName}  label="Account Name" class="slds-p-horizontal_x-large" placeholder="Enter Account Name"
+          onchange={handleAccountName}></lightning-input>
+        <p> account Name : {accountName}</p>
+        <lightning-input value={supportTier} label="Support Tier" placeholder="Enter Support Tier" class="slds-p-horizontal_x-large"
+          onchange={shubham}></lightning-input>
+        <p> Support Tier : {supportTier}</p>
+        <lightning-input value={recordId} label="Record Id" placeholder="Enter valid Record Id" class="slds-p-horizontal_x-large"
+          onchange={handleRecordId}></lightning-input>
+        <p> Support Tier : {supportTier}</p>
+       <p> concatedValue: {concatedValue}</p>
+    <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+      <div class="slds-grid slds-gutters slds-align_absolute-center">
+          <div class="slds-col">
+            <lightning-button  variant="brand" label="Update Account" icon-position="right"
+            title="Begins the task"
+            onclick={handleUpdateClick}>
+           </lightning-button>
+          </div>
+          <div class="slds-col">
+            <lightning-button class="slds-p-around_xx-large" variant="brand" label="Show Conatact" icon-position="right"
+            title="Begins the task"
+            onclick={handleShowContact}>
+          </lightning-button>
+          </div>
+          <div class="slds-col">
+            <lightning-button class="slds-p-around_xx-large" variant="brand" label="Hide Conatact" icon-position="right"
+            title="Begins the task"
+            onclick={handleHideContact}>
+          </lightning-button>
+          </div>
+      </div>
+  </div>
+      </lightning-card> 
+      
+      <template if:true={showContact}>
+      <lightning-card title="Contact Details">
+        <lightning-input label="First Name" placeholder="Enter First name" class="slds-p-horizontal_x-large" onchange={handleFirstName}></lightning-input> 
+        <lightning-input label="Last Name" placeholder="Enter Last name" class="slds-p-horizontal_x-large" onchange={handleLastName}></lightning-input> 
+        <lightning-input type="email" label="Email" placeholder="Enter Email" class="slds-p-horizontal_x-large" onchange={handleEmail}></lightning-input>
+        <lightning-button  class="slds-p-top_xx-large" variant="brand" label="Update Contact and Account" title="Begins the task" onclick={handleUpdateContact}>
+        </lightning-button>
+      </lightning-card>
+    </template>
+  </template>
