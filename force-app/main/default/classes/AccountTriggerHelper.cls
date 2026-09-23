@@ -25,6 +25,7 @@ public class AccountTriggerHelper {
         }
         
         if(!oppList.isEmpty()){
+            system.debug('opportunity List to update==>'+oppList);
             update oppList;
         }
     }     
