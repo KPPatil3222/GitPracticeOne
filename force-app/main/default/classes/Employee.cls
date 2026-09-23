@@ -5,6 +5,7 @@ public class Employee {
     public Decimal setSalary {
         get {
             return salary;
+            system.debug('here we calling salary function');
         }
 
         set {
