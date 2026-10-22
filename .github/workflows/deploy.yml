@@ -1,5 +1,5 @@
 # ================================================================
-# Salesforce Delta Deployment Pipeline
+# Salesforce Delta Deployment Pipeline from Arun
 #
 # FLOW:
 # 1. Developer creates PR  → Validation runs automatically
@@ -52,27 +52,27 @@ jobs:
         run: |
           if [ "${{ github.ref_name }}" == "develop" ] || \
              [ "${{ github.base_ref }}" == "develop" ]; then
-            echo "AUTH_URL=${{ secrets.SALESFORCE_AUTH_URL_DEV }}" >> $GITHUB_ENV
+            echo "AUTH_URL=${{ secrets.SF_AUTH_URL_DEV }}" >> $GITHUB_ENV
             echo "TEST_LEVEL=NoTestRun" >> $GITHUB_ENV
-            echo "ENV_NAME=DEV" >> $GITHUB_ENV
+            echo "ENV_NAME=deploymentDEV" >> $GITHUB_ENV
 
           elif [ "${{ github.ref_name }}" == "sit" ] || \
                [ "${{ github.base_ref }}" == "sit" ]; then
-            echo "AUTH_URL=${{ secrets.SALESFORCE_AUTH_URL_SIT }}" >> $GITHUB_ENV
+            echo "AUTH_URL=${{ secrets.SF_AUTH_URL_SIT }}" >> $GITHUB_ENV
             echo "TEST_LEVEL=RunLocalTests" >> $GITHUB_ENV
-            echo "ENV_NAME=SIT" >> $GITHUB_ENV
+            echo "ENV_NAME=deploymentSIT" >> $GITHUB_ENV
 
           elif [ "${{ github.ref_name }}" == "uat" ] || \
                [ "${{ github.base_ref }}" == "uat" ]; then
-            echo "AUTH_URL=${{ secrets.SALESFORCE_AUTH_URL_UAT }}" >> $GITHUB_ENV
+            echo "AUTH_URL=${{ secrets.SF_AUTH_URL_UAT }}" >> $GITHUB_ENV
             echo "TEST_LEVEL=RunLocalTests" >> $GITHUB_ENV
-            echo "ENV_NAME=UAT" >> $GITHUB_ENV
+            echo "ENV_NAME=deploymentUAT" >> $GITHUB_ENV
 
           elif [ "${{ github.ref_name }}" == "main" ] || \
                [ "${{ github.base_ref }}" == "main" ]; then
-            echo "AUTH_URL=${{ secrets.SALESFORCE_AUTH_URL_PROD }}" >> $GITHUB_ENV
+            echo "AUTH_URL=${{ secrets.SF_AUTH_URL_PROD }}" >> $GITHUB_ENV
             echo "TEST_LEVEL=RunAllTestsInOrg" >> $GITHUB_ENV
-            echo "ENV_NAME=PROD" >> $GITHUB_ENV
+            echo "ENV_NAME=deploymentPROD" >> $GITHUB_ENV
           fi
 
       - name: Authenticate to Salesforce (${{ env.ENV_NAME }})
